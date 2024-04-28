@@ -1,0 +1,18 @@
+{
+  "name": "taks-fullstak-junior",
+  "version": "1.0.0",
+  "description": "[] Cree una aplicación de gestión de tareas sencilla siguiendo el diseño dado.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

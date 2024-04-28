@@ -1,0 +1,14 @@
+GET http://localhost:3000/api/taks
+Content-Type: application/json
+####
+POST http://localhost:3000/api/taks/create
+Content-Type: application/json
+
+{
+  "urlIcon": "/assets/icons/clock-svgrepo-com.svg",
+  "title": "Example Taks2",
+  "description": "Hello world2",
+  "state": "completed"
+}
+#####
+DELETE http://localhost:3000/api/taks/delete/4

@@ -1,6 +1,330 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-body: #f8fafc;
+}
+
+body {
+  background: var(--bg-body);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  font-family: "Outfit Variable", sans-serif;
+}
+
+main {
+  .main-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    .info {
+      .board-title {
+        font-weight: normal;
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      .description-board {
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+
+    .edit-board-title {
+      border: none;
+      background: none;
+      outline: none;
+    }
+  }
+
+  .completed {
+    background: #a0ecb1;
+  }
+  .in-progress {
+    background: #f5d565;
+  }
+  .not-do {
+    background: #f7d4d3;
+  }
+  .to-do {
+    background: #e3e8ef;
+  }
+
+  .taks {
+    .taks {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: scale 0.3s ease;
+      &:hover {
+        scale: 1.02;
+      }
+
+      & > div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .info-taks {
+          .taks-title {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 5px;
+          }
+          .description-taks {
+            font-weight: 400;
+            font-size: 16px;
+            color: #404143;
+          }
+        }
+      }
+      .icon,
+      .state-of-task {
+        border: none;
+        padding: 10px;
+        background: var(--bg-body);
+        border-radius: 15px;
+        img {
+          width: 30px;
+          vertical-align: top;
+        }
+      }
+      .state-of-task {
+        margin-left: 40px;
+        img {
+          width: 20px;
+        }
+        &.completed {
+          background: #32d657;
+        }
+        &.in-progress {
+          background: #e9a23b;
+        }
+        &.not-do {
+          background: #dd524c;
+        }
+      }
+    }
+  }
+
+  .add-task {
+    background: #f5e8d5;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .addTask {
+      background: #e9a23b;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: scale 0.3s ease;
+      &:hover {
+        scale: 0.9;
+      }
+      img {
+        width: 45px;
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-task {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 10px;
+  padding: 30px;
+  z-index: 1000;
+  background: var(--bg-body);
+  width: 50%;
+
+  .header-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    .modal-title {
+      font-weight: normal;
+      font-size: 20px;
+    }
+    .close-modal {
+      border: 1px solid #e3e8ef;
+      background: none;
+      padding: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      img {
+        width: 25px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .inputs {
+    label {
+      input,
+      textarea {
+        padding: 10px 20px;
+        outline: none;
+        border-radius: 8px;
+        border: 2px solid #e3e8ef;
+        margin-bottom: 20px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        &:focus {
+          border-color: #3662e3;
+        }
+        &::placeholder {
+          color: #97a3b6;
+          font-family: "Outfit Variable", sans-serif;
+          font-size: 18px;
+        }
+      }
+      input {
+        width: 100%;
+      }
+      textarea {
+        display: inline-block;
+        width: 100%;
+        resize: none;
+      }
+      span {
+        display: block;
+        font-size: 16px;
+        font-weight: 400;
+        color: #97a3b6;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  h4 {
+    font-weight: normal;
+    color: #97a3b6;
+    margin-bottom: 10px;
+  }
+
+  .Seticons {
+    margin-bottom: 10px;
+    .icon-form {
+      border: none;
+      border-radius: 8px;
+      padding: 5px;
+      background: #e3e8ef;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+      &.active {
+        background: #f5d565;
+      }
+    }
+  }
+  .setStates {
+    .btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      button {
+        font-family: "Outfit Variable", sans-serif;
+        border: 2px solid #e3e8ef;
+        background: none;
+        padding: 5px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 500;
+
+        .content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .check {
+            color: #3662e3;
+            opacity: 0;
+          }
+          .tag {
+            padding: 10px;
+            border-radius: 8px;
+            margin-right: 20px;
+            img {
+              vertical-align: top;
+            }
+            &.progress {
+              background: #e9a23b;
+            }
+            &.not-do {
+              background: #dd524c;
+            }
+            &.completed {
+              background: #32d657;
+            }
+          }
+        }
+
+        &.active {
+          border-color: #3662e3;
+          .content {
+            .check {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .save-delete {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    button {
+      border: none;
+      padding: 10px 25px;
+      border-radius: 20px;
+      color: #fff;
+      font-family: "Outfit Variable", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      img {
+        vertical-align: top;
+      }
+
+      &#btnDelete {
+        background: #97a3b6;
+      }
+      &#btnSave {
+        background: #3662e3;
+      }
+    }
+  }
 }

@@ -9,6 +9,6 @@ route.post("/api/taks/create", ControllerQuery.Create);
 
 route.delete("/api/taks/delete/:id", ControllerQuery.Delete);
 
-route.post("/board/:id", (req, res) => res.send("hola"));
+route.post("/board/:id", (req, res) => res.send("some..."));
 
 export default route;

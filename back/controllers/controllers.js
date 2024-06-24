@@ -15,7 +15,7 @@ export class ControllerQuery {
       await ConnectDbBoardTaks.Create(req.body);
       res.json({ message: "Taks Created" });
     } catch (e) {
-      throw new Error("Error internal sever");
+      throw new Error("Error internal sever: " + e);
     }
   }
   static async Delete(req, res) {

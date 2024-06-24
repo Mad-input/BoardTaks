@@ -1,6 +1,6 @@
 [] Cree una aplicación de gestión de tareas sencilla siguiendo el diseño dado.
 
-[] Por defecto, debería mostrar un tablero con 4 tareas como en el diseño.
+[X] Por defecto, debería mostrar un tablero con 4 tareas como en el diseño.
 
 [] Los usuarios pueden editar el nombre, la descripción, el icono y el estado de la tarea.
 

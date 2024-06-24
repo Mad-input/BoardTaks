@@ -62,6 +62,8 @@ main {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
+      width: 30vw;
+      min-width: 450px;
       padding: 15px;
       border-radius: 20px;
       cursor: pointer;
@@ -155,13 +157,17 @@ main {
 
 .modal-task {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 10px;
   border-radius: 10px;
   padding: 30px;
   z-index: 1000;
   background: var(--bg-body);
   width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
 
   .header-form {
     display: flex;
@@ -258,6 +264,7 @@ main {
         border-radius: 10px;
         font-size: 16px;
         font-weight: 500;
+        cursor: pointer;
 
         .content {
           display: flex;

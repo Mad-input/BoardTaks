@@ -1,7 +1,7 @@
 
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
-export default function Taks({icon,title,description,state}) {
+export default function Taks({icon,title,description,state,setShow, setValues, id}) {
     const icons = ['/icons/clock-svgrepo-com.svg','/icons/bee-svgrepo-com.svg','/icons/coffee-svgrepo-com.svg','/icons/books-book-svgrepo-com.svg','/icons/computer.svg', '/icons/dialog-2-svgrepo-com.svg']
     const iconsS = ['/icons/Time_atack_duotone.svg','/icons/close_ring_duotone-1.svg','/icons/Done_round.svg']
     const taskStatus = {
@@ -23,7 +23,10 @@ export default function Taks({icon,title,description,state}) {
         return taskStatus.IDDLE
     }
   return (
-    <article className={`taks ${ClassState()}`}>
+    <article className={`taks ${ClassState()}`} onClick={()=> {
+        setShow()
+        setValues(title,description,icon,state,id)
+    } }>
         <div>
         <div className="icon">
             <img src={icons[+icon - 1]} alt="logo" />

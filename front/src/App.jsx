@@ -7,8 +7,17 @@ import './App.css'
 
 function App() {
   const [taks, setTaks] = useState([])
-  const [showModal, setShowModal] = useState(true)
-  const [stateForm, setStateForm] = useState('none')
+  const [showModal, setShowModal] = useState(false)
+  const [stateForm, setStateForm] = useState(null)
+  const [render, setRender] = useState(undefined)
+  const [values, setValues] = useState({title: "", description: "",icon: "",state: "", id: ""})
+
+  const handleValues = (title, description, icon, state, id) => {
+    setValues({title, description,icon, state, id})
+  }
+  const handleShow = ()=> {
+    setShowModal(!showModal)
+  }
 
   useEffect(()=>{
     const getAllTaks = async () => {
@@ -19,10 +28,11 @@ function App() {
       }
     }
     getAllTaks()
+    setRender(()=> getAllTaks)
   },[])
 
   return (
-    <>
+      <>
     <main>
       <div className="main-header">
         <div className="logo">
@@ -36,8 +46,18 @@ function App() {
       </div>
       <section className='taks'>
           {
-            taks.map(item => (
-              <Taks key={crypto.randomUUID()} icon={item.icon} title={item.title} description={item.description} state={item.state}></Taks>
+            taks.map((item) => (
+              <Taks 
+              key={crypto.randomUUID()} 
+              icon={item.icon} 
+              title={item.title} 
+              description={item.description} 
+              state={item.state}
+              setShow={handleShow}
+              setValues={handleValues}
+              id={item.id}
+              >
+              </Taks>
             ))
           }
       </section>
@@ -47,7 +67,7 @@ function App() {
           </section>
     </main>
     {
-      showModal ? <ModalTask></ModalTask>: ''
+      showModal && <ModalTask data={values} show={handleShow} render={render}></ModalTask>
     }
     </>
   )

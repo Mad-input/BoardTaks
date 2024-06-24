@@ -19,11 +19,11 @@ export class ConnectDbBoardTaks {
       console.error(e);
     }
   }
-  static async Create({ urlIcon, title, description, state }) {
+  static async Create({ icon, title, description, state }) {
     try {
       await connection.query(
         "INSERT INTO Taks(icon,title,description,state) VALUES(?,?,?,?)",
-        [urlIcon, title, description, state]
+        [icon, title, description, state]
       );
     } catch (e) {
       throw new Error("Error internal server");
